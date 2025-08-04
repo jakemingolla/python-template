@@ -13,7 +13,7 @@ jobs:
           version: "0.7.21"
 
       - name: 📦 Install Dependencies
-        run: uv sync
+        run: uv sync --frozen
 
       - name: 🧪 Run Tests
         run: pytest
