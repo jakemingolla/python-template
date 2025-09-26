@@ -14,6 +14,7 @@ help:  ## Show this help message
 	@echo "  test-only - Run tests with the 'only' marker"
 	@echo "  test-unit - Run unit tests"
 	@echo "  test-integration - Run integration tests"
+	@echo "  dev - Run the project in development mode"
 
 install: uv ## Install dependencies
 	uv sync --frozen
@@ -32,3 +33,6 @@ test-only:  ## Run tests with the 'only' marker
 
 lint:  ## Run linters
 	uv run ruff check && uv run basedpyright
+
+dev:  ## Run the project in development mode
+	@uv run python -m src.main
