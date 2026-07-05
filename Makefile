@@ -1,4 +1,4 @@
-.PHONY: uv help install test lint run
+.PHONY: uv help install test lint format run
 uv:  ## Install uv if it's not present.
 	@command -v uv >/dev/null 2>&1 || curl -LsSf https://astral.sh/uv/$(cat .uv-version)/install.sh | sh
 
@@ -10,6 +10,7 @@ help:  ## Show this help message
 	@echo "  install - Install dependencies"
 	@echo "  run - Run the project"
 	@echo "  lint - Run linting"
+	@echo "  format - Format code"
 	@echo "  test - Run all tests"
 	@echo "  test-only - Run tests with the 'only' marker"
 	@echo "  test-unit - Run unit tests"
@@ -31,8 +32,11 @@ test:  ## Run tests
 test-only:  ## Run tests with the 'only' marker
 	uv run python -m pytest -s -m only test/
 
+format:  ## Format code
+	uv run ruff format
+
 lint:  ## Run linters
-	uv run ruff check && uv run basedpyright
+	uv run ruff check && uv run ruff format --check && uv run basedpyright
 
 dev:  ## Run the project in development mode
 	@uv run python -m src.main
