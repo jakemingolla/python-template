@@ -1,0 +1,29 @@
+name: Setup Python environment
+description: Setup Python and uv from .uv-version, and install dependencies
+
+runs:
+  using: composite
+  steps:
+    - name: Read uv version
+      id: uv-version
+      shell: bash
+      run: echo "version=$(cat .uv-version)" >> "$GITHUB_OUTPUT"
+
+    - name: "🐍 Set up Python"
+      uses: actions/setup-python@v5
+      with:
+        python-version-file: ".python-version"
+
+    - name: 🔧 Setup UV
+      uses: astral-sh/setup-uv@v6
+      with:
+        enable-cache: true
+        version: ${{ steps.uv-version.outputs.version }}
+
+    - name: "👾 Create virtual environment"
+      shell: bash
+      run: uv venv
+
+    - name: 📦 Install Dependencies
+      shell: bash
+      run: make install
