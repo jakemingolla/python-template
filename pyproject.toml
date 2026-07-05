@@ -72,3 +72,8 @@ ignore = [
 
 [tool.ruff.lint.flake8-builtins]
 ignorelist = ["id", "input"]
+
+[tool.pytest.ini_options]
+markers = [
+    "only: run only this test (used with make test-only)",
+]
