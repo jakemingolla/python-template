@@ -1,12 +1,9 @@
 name: Setup Python environment
-description: Checkout, setup Python and uv from .uv-version, and install dependencies
+description: Setup Python and uv from .uv-version, and install dependencies
 
 runs:
   using: composite
   steps:
-    - name: 🏗 Checkout Repo
-      uses: actions/checkout@v4
-
     - name: Read uv version
       id: uv-version
       shell: bash
