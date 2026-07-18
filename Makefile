@@ -39,4 +39,4 @@ lint:  ## Run linters
 	uv run ruff check && uv run ruff format --check && uv run basedpyright
 
 dev:  ## Run the project in development mode
-	@uv run python -m src.main
+	@uv run python -m python_template.main
