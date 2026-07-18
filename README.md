@@ -5,8 +5,8 @@ A minimal Python project template with [uv](https://docs.astral.sh/uv/), strict 
 ## Prerequisites
 
 - **Python 3.13.5** — match `.python-version` (pyenv or similar is recommended)
-- **make** — runs the common workflows below
-- **uv** — not required upfront; `make install` installs the pinned version from `.uv-version` if uv is missing
+- **[just](https://github.com/casey/just)** — command runner for common workflows (`brew install just`, or see [installation](https://github.com/casey/just#installation))
+- **uv** — not required upfront; `just install` installs the pinned version from `.uv-version` if uv is missing
 
 ## Quick start
 
@@ -15,29 +15,17 @@ Clone the repo, install dependencies, and run tests:
 ```bash
 git clone <repo-url>
 cd python-template
-make install
-make test
+just install
+just test
 ```
 
-Tests do not require a `.env` file.
-
-## Makefile targets
-
-| Target | Description |
-| --- | --- |
-| `make install` | Install dependencies (`uv sync --frozen`) |
-| `make test` | Run unit and integration tests |
-| `make test-unit` | Run tests in `test/unit/` |
-| `make test-integration` | Run tests in `test/integration/` |
-| `make lint` | Run ruff and basedpyright |
-| `make dev` | Run the app (`python -m src.main`) |
-| `make help` | List all targets |
+Run `just` with no arguments to list all recipes. Tests do not require a `.env` file.
 
 ## Configuration (`.env`)
 
 Runtime settings live in a `.env` file at the project root (gitignored). Values are loaded by [pydantic-settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/) — see `src/config/types.py` for the schema.
 
-Create `.env` before running `make dev`:
+Create `.env` before running `just dev`:
 
 ```dotenv
 OPENAI_API_KEY=your-key-here
@@ -58,4 +46,4 @@ When starting a new repo from this template, rename or update at least:
 | `src/config/types.py` | Config fields for your service |
 | `README.md` | Project name, setup notes, and links |
 
-Keep the Makefile, lint/type-check config, and test layout unless your project needs different tooling.
+Keep the justfile, lint/type-check config, and test layout unless your project needs different tooling.
