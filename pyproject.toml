@@ -75,5 +75,5 @@ ignorelist = ["id", "input"]
 
 [tool.pytest.ini_options]
 markers = [
-    "only: run only this test (used with make test-only)",
+    "only: run only this test (used with just test-only)",
 ]
