@@ -25,7 +25,7 @@ just test
 
 ## Configuration (`.env`)
 
-Runtime settings live in a `.env` file at the project root (gitignored). Values are loaded by [pydantic-settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/) — see `src/python_template/config/types.py` for the schema.
+Runtime settings live in a `.env` file at the project root (gitignored). Values are loaded by [pydantic-settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/) via `get_config()` — see `src/python_template/config/types.py` for the schema and `src/python_template/config/main.py` for the factory.
 
 Create `.env` before running `just dev`:
 
