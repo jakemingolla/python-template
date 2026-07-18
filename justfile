@@ -38,6 +38,6 @@ lint:
 
 # Run the project in development mode
 dev:
-    uv run python -m src.main
+    uv run python -m python_template.main
 
 alias run := dev

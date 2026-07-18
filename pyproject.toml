@@ -1,3 +1,7 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "python-template"
 version = "0.1.0"
@@ -15,6 +19,9 @@ dev = [
     "pytest>=9.1.1",
     "ruff>=0.15.20",
 ]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/python_template"]
 
 [tool.basedpyright]
 include = ["src/", "test/"]
